@@ -1,0 +1,49 @@
+{
+  "name": "SivTron",
+  "productName": "Siv Packager Script",
+  "description": "Packager for your electron + sqlite application",
+  "version": "1.0.0",
+  "author": "Siv S <sivsivsree@gmail.com>",
+  "copyright": "© 2017.",
+  "homepage": "http://gitgub.com/sivsivsree",
+  "license": "MIT",
+  "main": "app/app.js",
+  "build": {
+    "appId": "com.example.electron-boilerplate-sqlite",
+    "files": [
+      "app/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "icon": "build/icons"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "createDesktopShortcut": true,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "scripts": {
+    "postinstall": "electron-builder install-app-deps",
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "release": "build -wl --x64 --ia32",
+    "pack": "electron-builder -wl --dir",
+    "dist": "electron-builder -wl"
+  },
+  "dependencies": {
+    "sqlite3": "^3.1.8"
+  },
+  "devDependencies": {
+    "electron": "latest",
+    "electron-builder": "latest"
+  }
+}
